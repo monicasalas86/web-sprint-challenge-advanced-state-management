@@ -1,8 +1,49 @@
 
 export const initialState = {
+    smurfs: [],
+    isFetching: false,
+    error: ''
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action)=>{
+    // console.log('reducer', action);
+    switch(action.type) {
+        case FETCH_SMURF_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case FETCH_SMURF_SUCCESS:
+            return {
+                ...state,
+                smurf: action.payload,
+                isFetching: false,
+                error: ''
+            }
+        case FETCH_SMURF_FAIL:
+            return {
+                ...state,
+                error: action.payload
+            }
+        case ADD_SMURF:
+            return {
+                ...state,
+                smurf: [{
+                    name: '',
+                    nickname: '',
+                    position: '',
+                    summary: '',
+                    id: '',
+                }]
+            }
+        case ADD_ERROR:
+            return {
+                error: 'not found'
+            }
+        default:
+            return state;
+    }
 }
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
