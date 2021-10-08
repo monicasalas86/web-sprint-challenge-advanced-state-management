@@ -21,11 +21,11 @@ export const fetchSmurfs = () => dispatch => {
             dispatch({type: FETCH_SMURF_FAIL, payload: err})
         })
 }
-export const addSmurf = (data) => {
-    return{type: ADD_SMURF, payload: data}
+export const addSmurf = (smurfs) => {
+    return{type: ADD_SMURF, payload: smurfs}
 }
-export const setError = (data) => {
-    return{type: SET_ERROR, payload: data}
+export const setError = (error) => {
+    return{type: SET_ERROR, payload: error}
 }
 
 //Task List:
