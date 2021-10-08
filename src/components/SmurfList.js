@@ -4,27 +4,21 @@ import { connect } from 'react-redux';
 import { fetchSmurfs } from '../actions';
 
 const SmurfList = (props)=> {
-    const {smurfs, isFetching, error} = props;
-
+    
     useEffect(() => {
         props.fetchSmurfs();
     }, []);
-    // const isLoading = false;
-    // const testSmurf = {
-    //     id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-    //     name:'Poppa Smurf',
-    //     position:'Village Leader',
-    //     nickname: 'Pops',
-    //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
-    // }
-    if (error) {
+    
+    if (props.error) {
         return <h1>Error: No Smurfs Found</h1>
     }
-    if (isFetching) {
+    if (props.isFetching) {
         return <h1>Loading...</h1>;
     }
     return(<div className="listContainer">
-        {smurfs.map(item => <Smurf smurf={smurfs}/>)}
+        {props.smurfs.map((smurf) => {
+            return <Smurf smurf={smurf}/>
+        })}
     </div>);
 }
 
