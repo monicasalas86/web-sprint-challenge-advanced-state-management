@@ -3,8 +3,8 @@ import axios from 'axios';
 export const FETCH_SMURF_START = 'FETCH_SMURF_START';
 export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS';
 export const FETCH_SMURF_FAIL = 'FETCH_SMURF_FAIL';
-// export const ADD_SMURF = 'ADD_SMURF';
-// export const ADD_ERROR = 'ADD_ERROR';
+export const ADD_SMURF = 'ADD_SMURF';
+export const SET_ERROR = 'SET_ERROR';
 
 
 export const fetchSmurfs = () => dispatch => {
@@ -18,8 +18,14 @@ export const fetchSmurfs = () => dispatch => {
         })
         .catch(err => {
             // console.log(err);
-            dispatch({type: FETCH_SMURF_FAIL, payload: 'ERROR: no smurfs found'})
+            dispatch({type: FETCH_SMURF_FAIL, payload: err})
         })
+}
+export const addSmurf = (data) => {
+    return{type: ADD_SMURF, payload: data}
+}
+export const setError = (data) => {
+    return{type: SET_ERROR, payload: data}
 }
 
 //Task List:
