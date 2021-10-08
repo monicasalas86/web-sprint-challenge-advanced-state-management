@@ -8,13 +8,13 @@ export const FETCH_SMURF_FAIL = 'FETCH_SMURF_FAIL';
 
 export const fetchSmurfs = () => dispatch => {
     dispatch({ type:FETCH_SMURF_START });
-    axios.get('http://localhost:3333/smurfsasdf')
+    axios.get('http://localhost:3333/smurfs')
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             dispatch({type: FETCH_SMURF_SUCCESS, payload: res.data})
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             dispatch({type: FETCH_SMURF_FAIL, payload: 'ERROR: no smurfs found'})
         })
 }
