@@ -9,12 +9,14 @@ export const initialState = {
 const reducer = (state = initialState, action)=>{
     // console.log('reducer', action);
     switch(action.type) {
+        // loading state
         case FETCH_SMURF_START:
             return {
                 ...state,
                 isFetching: true,
                 error: ''
             }
+        // successful state
         case FETCH_SMURF_SUCCESS:
             return {
                 ...state,
@@ -22,13 +24,14 @@ const reducer = (state = initialState, action)=>{
                 isFetching: false,
                 error: ''
             }
+        // error state
         case FETCH_SMURF_FAIL:
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload
             }
-        
+        // adding a smurf
         // case ADD_SMURF:
         //     return {
         //         ...state,
@@ -40,6 +43,7 @@ const reducer = (state = initialState, action)=>{
         //             id: '',
         //         }]
         //     }
+        // adds a value to error message
         // case ADD_ERROR:
         //     return {
         //         error: 'not found'

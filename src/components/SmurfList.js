@@ -4,17 +4,22 @@ import { connect } from 'react-redux';
 import { fetchSmurfs } from '../actions';
 
 const SmurfList = (props)=> {
-    
+
     useEffect(() => {
         props.fetchSmurfs();
     }, []);
     
+    // error state
     if (props.error) {
         return <h1>Error: No Smurfs Found</h1>
     }
+
+    // loading state
     if (props.isFetching) {
         return <h1>Loading...</h1>;
     }
+
+    // smurflist
     return(<div className="listContainer">
         {props.smurfs.map((smurf) => {
             return <Smurf smurf={smurf}/>

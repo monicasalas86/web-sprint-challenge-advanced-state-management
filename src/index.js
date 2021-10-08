@@ -10,6 +10,7 @@ import reducer from "./reducers";
 import "./index.css";
 import App from "./App";
 
+// store created
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 const { worker } = require('./mocks/browser');

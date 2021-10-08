@@ -6,8 +6,11 @@ export const FETCH_SMURF_FAIL = 'FETCH_SMURF_FAIL';
 // export const ADD_SMURF = 'ADD_SMURF';
 // export const ADD_ERROR = 'ADD_ERROR';
 
+
 export const fetchSmurfs = () => dispatch => {
+    // thunk action that triggers loading status
     dispatch({ type:FETCH_SMURF_START });
+    // axios call to retrieve smurfs from server
     axios.get('http://localhost:3333/smurfs')
         .then(res => {
             // console.log(res.data)
